@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Email Verification | StreetHack</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-fixed navbar-expand-lg navbar-dark bg-dark sticky d-flex justify-content-between"
+            data-spy="affix" data-offset-top="197">
+            <a class="navbar-brand" href="#">
+                Street<strong>Hack</strong>
+            </a>
+            <ul class="navbar-nav text-right mr-0">
+                <li class="nav-item text-right">
+                    <a class="nav-link" href="/profile/{{id}}">
+                        Go Back to Profile
+                    </a>
+                </li>
+        </nav>
+        <div class="container-fluid" style="min-height: 100%">
+            <div class="row" style="height: 80vh">
+                <div class="col-12 mt-5">
+                    {{#if verificationIsSuccessful}}
+                        <div class="text-center text-success"><i class="fas fa-3x fa-check-circle"></i></div>
+                        <h1 class="text-center text-success py-4">Email Verified</h1>
+                    {{/if}}
+                    {{#if verificationIsNotSuccessful}}
+                        <div class="text-center text-danger"><i class="fas fa-3x fa-exclamation-circle"></i></div>
+                        <h1 class="text-center text-danger py-4">Email Not Verified</h1>
+                    {{/if}}
+                    <div class="text-center">
+                        <a href="/">&#8617; Go to Homepage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://kit.fontawesome.com/7f05549f7c.js"></script>
+
+</html>

@@ -1,0 +1,30 @@
+.slider {
+  margin: 1rem auto;
+  .slider-arrow {
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 0.75em;
+    border-radius: 0;
+  }
+  .slider-arrow:focus,
+  .slider-arrow:active:focus,
+  .btn-light:not(:disabled):not(.disabled).active:focus,
+  .btn-light:not(:disabled):not(.disabled):active:focus,
+  .show > .btn-light.dropdown-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 0 white;
+  }
+  .slider-arrow-left {
+    margin-left: -2.5em;
+    i {
+      margin-left: -2px;
+    }
+  }
+  .slider-arrow-right {
+    margin-left: 2em;
+    margin-right: -1.5em;
+    i {
+      margin-right: -2px;
+    }
+  }
+}

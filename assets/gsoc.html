@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" href="img/sq-logo.png" type="image/x-icon" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+       <title>Streethack - GSOC </title>
+        <!-- Icon css link -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/icofont.css" rel="stylesheet">
+        
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Rev slider css -->
+        <link href="vendors/revolution/css/settings.css" rel="stylesheet">
+        <link href="vendors/revolution/css/layers.css" rel="stylesheet">
+        <link href="vendors/revolution/css/navigation.css" rel="stylesheet">
+        <link href="vendors/animate-css/animate.css" rel="stylesheet">
+        
+        <!-- Extra plugin css -->
+        <link href="vendors/magnific-popup/magnific-popup.css" rel="stylesheet">
+        <link href="vendors/owl-carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet">
+        
+        <style>
+        /* Banner new css
+============================================================================================ */
+.banner_new_area {
+  background:linear-gradient(rgba(52,152,219, 0.85),rgba(52,152,219, 0.85)) , url(img/streethackbg.jpg) no-repeat scroll center ;
+  background-size: cover;
+ 
+  
+}
+.banner_new_layer {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: #3498db;
+  opacity: 0.95;
+}
+.banner_new_area .b_new_text {
+  padding-top: 130px;
+}
+
+.banner_new_area .b_new_text h3 {
+  font-size: 60px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Heebo", sans-serif;
+}
+
+.banner_new_area .b_new_text h3 span {
+  color: #000;
+}
+
+.banner_new_area .b_new_text h5 {
+  font-family: "Heebo", sans-serif;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  padding: 45px 0px 80px 0px;
+}
+
+.banner_new_area .b_new_image {
+  text-align: center;
+}
+
+.banner_new_area .b_new_image img {
+  max-width: 100%;
+}
+.ctimer {
+  display: inline-block;
+  font-size: 2rem;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4rem;
+}
+
+
+/* End Banner new css
+============================================================================================ */
+        </style>
+
+    </head>
+    <body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="90">
+       
+       
+       <div id="preloader">
+            <div id="preloader_spinner">
+                <div class="pre_inner">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                </div>
+            </div>
+        </div>
+       
+        <!--================Header Area =================-->
+        <header class="main_header_area blue_menu">
+            <div class="main_menu_area">
+                <div class="container">
+                    <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button> <!-- <a class="navbar-brand" href="index.html"><img src="img/logo-s.png" alt=""></a> -->
+                        <div class="navbar_logo">
+                            <a class="navbar-brand" href="index.html">
+                                <h1>StreetHack</h1>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                           <!-- <li><a href="#feature">FETURES</a></li>-->
+                            
+                         <!--   <li><a href="#screenshot">SCREENSHOT</a></li>
+                            <li><a href="#price">Price</a></li>
+                            <li><a href="#team">Team</a></li>-->
+                            
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#ideas">Ideas</a></li>
+                            <li><a href="#faqs">Application Instruction</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!--================End Header Area =================-->
+           <!--================Banner new Area =================-->
+            <!--================Banner new Area =================-->
+        <section class="banner_new_area " id="home2" >
+            <div class="container" >
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="b_new_text">
+                            <h3>StreetHack GSoC </h3>
+                            <h5> We Celebrate The Sense of Belonging</h5>
+                            <br/>
+                            <a class="border_btn" href="#">Nurturing Our Platform With the Power of Open Source </a>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="b_new_image">
+                            <img src="img/banner/banner-n-mobile1.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Banner new Area =================-->
+        <section class="satisfaction_area" id="about">
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-md-6 chose_content">
+                        <div class="left_title">
+                            <h2> StreetHack || Community Builders </h2>
+                        </div>
+                        <p>We at StreetHack, build and engage community for enterprise and institutions.We believe that it's good to grow together. Join us to feel the power of community.</p>
+                        <p>Do you feel the same ?</p>
+                        <!-- <a href="#" class="btn theme_btn">Learn More</a>-->
+                    </div>
+                     <div class="col-md-6 text-center">
+                        <img src="img/screenshot/mochup2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Satisfaction new Area =================-->
+
+        
+        
+<section class="question_area" id="challenges">
+            <div class="container">
+                <div class="main_title">
+                    <h2>Ideas</h2>
+                    <p>Here are the list of Ideas, confirmed for GSoC from our organization. Are You Interested to code for the community, Chose from the list, the ideas which excites you. Or if You have any idea of product, which can be used to engage students or professionals during community events, Please post it to <a href="mailto:info@streethack.org" target="_blank">StreetHack Admin</a> or post a Issue on <a href="https://github.com/streethack/gsocideas/"  target="_blank">github.</a><br/>
+                    <!--The Hackathon runs under the <a href="streethackrules.html">main rules of StreetHack.</a></p--></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left_question_inner">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading0">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="false" aria-controls="collapse0">
+                                            TechSpace | Community Platform For University
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
+                                        <div class="panel-body">
+                                        Techspace, started as “of the students, by the students, for the students” technical society of University School of ICT, New Delhi.
+                                        <br>
+                                        The space was envisioned as a safe space for technologists to tinker with ideas and innovations and figure out the effect on society. It grew From 25 people in 2014 to 250 in 2018 and still growing.
+                                        <br>
+                                        After Graduating, the Co-founder of Techspace,<a href="https://github.com/rjrajivjha" target="_blank">Rajiv Jha</a> co-founded StreetHack, an enterprise which creates and engages community for businesses through Hackathons, Meet-ups, Webinar among other engagement activities.
+                                        
+                                        During his market-research, he found that major difference between a top league academic institution and a tier-2, 3 institution is the "Culture". 
+                                        <br>
+                                        Culture is the, "total sum of all the interaction which you experience either with college peers, syllabus, exams, teachers & administration".
+
+                                        <br>Techspace is the platform which reduces the overhead of the institutions to organically grow the culture in the college and interact with the world.
+                                        <br>
+
+                                        The idea is to create a generic portal over current TechSpace,
+                                        <ul>
+                                            <li>Customizable Individual College Portal</li>
+                                            <li>A Pan India Portal</li>
+                                            <li>Custom platform for college over StreetHack platform, in few clicks.</li>
+                                            <li>The most engaging and starred post of a college, shown on our Pan-India portal.</li>
+                                            
+
+                                        </ul>
+                                        </br>
+You can find the current project at - <a href="https://github.com/techspaceusict/techspace-web">TechSpace USICT</a>
+</br>
+
+                                        
+<br>
+Technology - <br> Django , Python, Mongodb, MySQL & HTML, CSS, JS <br> 
+<br>
+Mentor - <a href="https://github.com/anuditverma">Anudit Verma</a>
+</br>
+                                        <br>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading1">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                            U-Hack | Hackathon Platform for University
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+                                        <div class="panel-body">
+                                        <div>
+                                            <span><h3>Challenge</h3>
+                                            <p> The Challenge is to design a platform to host meet-ups, hackathon, and conferences or technical festivals, all at one place.</p>
+                                            <br>
+                                            <h3>Expected Solution :</h3>
+                                            <p>Ensure the designed mechanism limits the effect of Harmonic attenuation and noise to a tolerable level</p>
+                                            <br>
+                                            <h3>Constraints</h3>
+                                            <p>No constraints.</p>
+                                            </span>
+                                            <hr>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--================End Question Area =================-->
+        
+         <!--================Question Area =================-->
+        <section class="question_area" id="faqs">
+            <div class="container">
+                <div class="main_title">
+                    <h2>Application Instructions</h2>
+                    <p>Should you have any other query, ping us at info@streethack.org</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left_question_inner">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-heading" role="tab" id="headingOneOne">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOneOne" aria-expanded="false" aria-controls="collapseOneOne">
+                                            1. Is this StreetHack event free of charge?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOneOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneOne">
+                                        <div class="panel-body">
+                                        YES. TOTALLY. With specific conditions (described in this FAQ), we offer you free accommodation, free snacks, free drinks.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwoTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoTwo" aria-expanded="false" aria-controls="collapseTwoTwo">
+                                            2. How can I submit my project to be considered for StreetHack ?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwoTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoTwo">
+                                        <div class="panel-body">
+                                         Register / Sign in at <a href="https://streethack.org/blockhack.html">https://streethack.org/blockhack.html</a>, apply to BlockHack hackathon and submit your project with as much detail as you can. It’s that simple!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThreeThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThreeThree" aria-expanded="false" aria-controls="collapseThreeThree">
+                                            3. How/when can I be eligible for the prizes ?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThreeThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThreeThree">
+                                        <div class="panel-body">
+                                       
+                                        Submit your project plan to BlockHack hackathon page. Join us at the event. Showcase your skills and project to convince the judges your solution is the best!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingFourFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourFour" aria-expanded="false" aria-controls="collapseFourFour">
+                                            4.  Do I have to stay at the 12H hack venue for the whole duration?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFourFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourFour">
+                                        <div class="panel-body">
+                                        No. This is an Online as well as On-site Event, But who would want to miss the spirit of the whole event and Global Entrepreneurship Summit? So be there, it will be AMAZING.
+
+                                        BlockHack hackathon will be held at GES, IIT - KGP.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left_question_inner">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-heading" role="tab" id="heading55">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse55" aria-expanded="false" aria-controls="collapse55">
+                                            5.  How can I get a travel grant?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse55" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading55">
+                                        <div class="panel-body">
+                                        Sorry, For BlockHack, we couldn’t arrange for travel grants this time.
+                                        But we have prizes to feed your craving for travel. Take the Plunge.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading66">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse66" aria-expanded="false" aria-controls="collapse66">
+                                            6. Can I participate if I cannot write code?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse66" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading66">
+                                        <div class="panel-body">
+                                        Yes you can! But we definitely recommend you to team up with some people with coding skills. You can search for them at <a href="https://www.facebook.com/groups/1633702170070588" target="_blank">our StreetHack Hackathon Community</a> and ask them to join your team.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading77">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse77" aria-expanded="false" aria-controls="collapse77">
+                                            7. Can I participate without a team or with a virtual team?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse77" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading77">
+                                        <div class="panel-body">
+                                        YES. We accept talented individuals to hack. We also accept individuals who have virtual team to back them up. Although we appreciate highly matchmaking before and at the venue.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading88">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse88" aria-expanded="false" aria-controls="collapse88">
+                                            8. How can I register my team?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse88" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading88">
+                                        <div class="panel-body">
+                                        Each team member should apply at https://streethack.org/blockhack.html . When you submit your Project on Github, just tag your team members to the project so we know who are involved in which project. Keep the project information up-to-date.
+
+                                        We accept the projects through github/gitlab only.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left_question_inner">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-heading" role="tab" id="heading9">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                            9. Is there limit to number of team members?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                                        <div class="panel-body">
+                                        YES. 4.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading10">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                            10. What kind of accommodation is available?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                                        <div class="panel-body">
+                                         Since this is 12 hr stint, who will sleep and lose out the chance of winning awesome prizes and interacting such a vibrant community. 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading11">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                            11. Any refreshments?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                                        <div class="panel-body">
+                                       
+                                         Coffee, tea and some light refreshments will be available.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading12">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                            12. What about the food allergies or specific travel or sleeping arrangements?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                                        <div class="panel-body">
+                                        Kharagpur campus is big enough to accomodate all special changes, even though, we recommend you to connect with GES Team.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="left_question_inner">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-heading" role="tab" id="heading13">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                            13.  What should I bring with me?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                                        <div class="panel-body">
+                                        Bring your own laptop and other devices such as your phone, tablet, charger, adapters etc. If possible come-up with an internet device for your team, which can be used in emergency by you, as our servers will be handling large amount of traffic. Bring also your personal items and whatever you think you would need during your weekend.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading14">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                            14. How can I protect my idea, when everyone can see my project plan?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                                        <div class="panel-body">
+                                        Of course there are limitations how to protect your idea when all ideas are visible. It is all about how you can manage to execute your idea. And remember - source code is not visible to all! Source code can be shown only to the judge. All IPR retains with you, and doesn’t transfer in this competition. However, challenge owners have the first buyer right for 3 months after the 12H event is finished.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading15">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                            15.  Question about our IPR. Are we losing or is our employer company in risk of losing IPR or patents if we participate to StreetHack hackathon? What does the term “Right of First of Refusal” mean?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                                        <div class="panel-body">
+                                        The ROFR only concerns the IPR created by the teams, not IPR owned or created by partners, organizers, etc. The team owns all IPR they have created, but if they want to sell this IPR to a third party, the track’s main partner may have the right to buy the IPR instead (becoming the buyer in the third party’s place). Generally, if a partner brings their own IPR to contestants, they are encouraged to do a separate agreement on use license of that particular IPR for the duration of the hackathon contest.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading16">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                            16. Can I start working on idea before ?
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                                        <div class="panel-body">
+                                        Yes. We believe in functional working solutions, and We also believe in True spirit of hackathon. So, You will be judged on the work done in 12 hour at hackathon. But, we encourage to prepare yourself before hackathon.
+
+                                        We also encourage start-ups working in similar domain and professional to come up with solutions.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!--================End Question Area =================-->        
+        <section class="subcribe_area_two" id="contact">
+            <div class="container">
+            <center><h2>Connect with us</h2></center>
+             <div class="typeform-widget" data-url="https://mukulrathi1.typeform.com/to/wLYam1" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=wLYam1&utm_source=typeform.com-13240770-Basic&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a> </div>
+            </div>
+        </section>
+        
+        <!--================subcribe_area_two =================-->
+      
+        
+        <!--===============footer Area =================-->
+        <footer class="footer_area_two">
+            <div class="container">
+                <div class="social-icon">
+                
+                
+                    <ul>
+                        
+                       
+                        <li><a  target="_blank" href="https://www.linkedin.com/company/streethack/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="mailto:info@streethack.org"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="tel:84480 22033"><i class="fa fa-phone"></i></a>
+                         <!--<li><a><i class="fa fa-twitter"></i></a></li>
+                        <li><a><i class="fa fa-google-plus"></i></a></li>
+                        <li><a><i class="fa fa-pinterest"></i></a></li>
+                        <li><a><i class="fa fa-dribbble"></i></a></li>-->
+                    </ul>
+                </div>
+                
+            </div>
+            <p>
+            +91 - 9871381106 | +91 - 9999386541 | +91 - 8447262336
+            <br>
+            C - 2, Sector 1, Noida, Uttar Pradesh - 201301, India 
+            <br>
+            NSRCEL, IIM-B, Billekhalli, Bangalore - 560076, India
+            </p>
+                <p class="copyright" style="color:red">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> StreetHack
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+            </div>
+        </footer>
+        <!--================End footer Area =================-->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-2.2.4.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Rev slider js -->
+        <!--<script src="vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script src="vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        <script src="vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+        <script src="vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>-->
+        <!-- Extra Plugin -->
+        <script src="vendors/parallax/jquery.parallax-scroll.js"></script>
+        <script src="vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="vendors/counterup/waypoints.min.js"></script>
+        <script src="vendors/counterup/jquery.counterup.min.js"></script>
+        <script src="vendors/flexslider/flex-slider.js"></script>
+        <script src="vendors/flexslider/mixitup.js"></script>
+        <script src="vendors/swiper/js/swiper.min.js"></script>
+        <script src="vendors/flipster-slider/jquery.flipster.min.js"></script>
+        <script src="vendors/nice-selector/jquery.nice-select.min.js"></script>
+        
+        <!--gmaps Js-->
+          <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="js/gmaps.min.js"></script>-->
+        
+        <script src="js/theme.js"></script>
+    </body>
+</html>

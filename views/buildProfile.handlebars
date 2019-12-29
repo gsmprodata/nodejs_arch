@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Edit Profile | StreetHack</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+        <style>
+            @media (max-width: 1063px) {
+                .text-center-sm {
+                    text-align: center !important;
+                }
+            }
+
+            textarea {
+                text-align: justify
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                margin: auto
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-fixed navbar-expand-lg navbar-dark bg-dark sticky d-flex justify-content-between"
+            data-spy="affix" data-offset-top="197">
+            <a class="navbar-brand" href="#">
+                Street<strong>Hack</strong>
+            </a>
+            <ul class="navbar-nav text-right mr-0">
+                <li class="nav-item text-right">
+                    <a class="nav-link" href="/profile/{{id}}">
+                        Go Back to Profile
+                    </a>
+                </li>
+        </nav>
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-10 col-sm-12" style="margin: auto">
+                    <h1 class="text-center">Edit Profile</h1>
+                    <hr />
+                    <div>
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Basics</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a class="btn btn-primary text-white mr-2" id="basicSaveBtn">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="name" value="{{name}}" id="name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="email" value="{{email}}" id="email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="about" class="col-sm-2 col-form-label">About</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="about" value="{{about}}" id="about">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="interests" class="col-sm-2 col-form-label">Interests *</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="interests" value="{{interests}}"
+                                    id="interests">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="skills" class="col-sm-2 col-form-label">Skills *</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="skills" value="{{skills}}" id="skills">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-12">* seperate items using ", " i.e. a comma followed by a whitespace</p>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Social Links</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a class="btn btn-primary text-white mr-2" id="socialSaveBtn">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group row">
+                            <label for="githubUrl" class="col-sm-2 col-form-label">GitHub</label>
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control" name="githubUrl" value="{{githubUrl}}"
+                                    id="githubUrl">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="linkedinUrl" class="col-sm-2 col-form-label">LinkedIn</label>
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control" name="linkedinUrl" value="{{linkedinUrl}}"
+                                    id="linkedinUrl">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="facebookUrl" class="col-sm-2 col-form-label">Facebook</label>
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control" name="facebookUrl" value="{{facebookUrl}}"
+                                    id="facebookUrl">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Projects</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="projectsSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="projectsRows" class="form-group row">
+                            {{#each projects}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="projectId{{id}}" value={{id}} />
+                                <label for="title" class="col-12 col-md-3 my-2 col-form-label">Title</label>
+                                <input name="title" class="form-control col-12 my-2 col-md-9" id="projectTitle{{id}}"
+                                    value="{{title}}" />
+
+                                <label for="startYear" class="col-12 col-md-3 my-2 col-form-label">Start Year</label>
+                                <input name="startYear" class="form-control col-12 my-2 col-md-9"
+                                    id="projectStartYear{{id}}" value="{{startYear}}" />
+
+                                <label for="endYear" class="col-12 col-md-3 my-2 col-form-label">End Year</label>
+                                <input name="endYear" class="form-control col-12 my-2 col-md-9"
+                                    id="projectEndYear{{id}}" value="{{endYear}}" />
+
+                                <label for=" description"
+                                    class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea rows="5" id="projectDescription{{id}}" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addProjectBtn" class="btn btn-dark">Add
+                                    Project</button></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Previous Internships</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="previousInternshipsSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="internshipsRows" class="form-group row">
+                            {{#each previousInternships}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="previousInternshipId{{id}}" value={{id}} />
+                                <label for="designation" class="col-12 col-md-3 my-2 col-form-label">Designation</label>
+                                <input id="previousInternshipDesignation{{id}}" name="designation"
+                                    class="form-control col-12 my-2 col-md-9" value="{{designation}}" />
+                                <label for="employer" class="col-12 col-md-3 my-2 col-form-label">Employer</label>
+                                <input id="previousInternshipEmployer{{id}}" name="employer"
+                                    class="form-control col-12 my-2 col-md-9" value="{{employer}}" />
+                                <label for="startYear" class="col-12 col-md-3 my-2 col-form-label">Start Year</label>
+                                <input id="previousInternshipStartYear{{id}}" name="startYear"
+                                    class="form-control col-12 my-2 col-md-9" value="{{startYear}}" />
+                                <label for="endYear" class="col-12 col-md-3 my-2 col-form-label">End Year</label>
+                                <input id="previousInternshipEndYear{{id}}" name="endYear"
+                                    class="form-control col-12 my-2 col-md-9" value="{{endYear}}" />
+                                <label for="description" class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea id="previousInternshipDescription{{id}}" rows="5" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addInternshipBtn" class="btn btn-dark">Add
+                                    Internship</button></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Previous Work Experience</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="previousWorkExperienceSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="workExperiencesRows" class="form-group row">
+                            {{#each previousWorkExperience}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="previousWorkExperienceId{{id}}" value={{id}} />
+                                <label for="designation" class="col-12 col-md-3 my-2 col-form-label">Designation</label>
+                                <input id="previousWorkExperienceDesignation{{id}}" name="designation"
+                                    class="form-control col-12 my-2 col-md-9" value="{{designation}}" />
+                                <label for="employer" class="col-12 col-md-3 my-2 col-form-label">Employer</label>
+                                <input id="previousWorkExperienceEmployer{{id}}" name="employer"
+                                    class="form-control col-12 my-2 col-md-9" value="{{employer}}" />
+                                <label for="startYear" class="col-12 col-md-3 my-2 col-form-label">Start Year</label>
+                                <input id="previousWorkExperienceStartYear{{id}}" name="startYear"
+                                    class="form-control col-12 my-2 col-md-9" value="{{startYear}}" />
+                                <label for="endYear" class="col-12 col-md-3 my-2 col-form-label">End Year</label>
+                                <input id="previousWorkExperienceEndYear{{id}}" name="endYear"
+                                    class="form-control col-12 my-2 col-md-9" value="{{endYear}}" />
+                                <label for="description" class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea id="previousWorkExperienceDescription{{id}}" rows="5" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addWorkExperienceBtn"
+                                    class="btn btn-dark">Add
+                                    Work Experience</button></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Achievements</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="achievementsSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="achievementsRows" class="form-group row">
+                            {{#each achievements}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="achievementId{{id}}" value={{id}} />
+                                <label for="title" class="col-12 col-md-3 my-2 col-form-label">Title</label>
+                                <input id="achievementTitle{{id}}" name="title"
+                                    class="form-control col-12 my-2 col-md-9" value="{{title}}" />
+                                <label for="issuer" class="col-12 col-md-3 my-2 col-form-label">Issuer</label>
+                                <input id="achievementIssuer{{id}}" name="issuer"
+                                    class="form-control col-12 my-2 col-md-9" value="{{issuer}}" />
+                                <label for="year" class="col-12 col-md-3 my-2 col-form-label">Year</label>
+                                <input id="achievementYear{{id}}" name="year" class="form-control col-12 my-2 col-md-9"
+                                    value="{{year}}" />
+                                <label for="description" class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea id="achievementDescription{{id}}" rows="5" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addAchievementBtn" class="btn btn-dark">Add
+                                    Achievement</button></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Academic Details</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="academicDetailsSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="academicDetailsRows" class="form-group row">
+                            {{#each academicDetails}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="academicDetailsId{{id}}" value={{id}} />
+                                <label for="degree" class="col-12 col-md-3 my-2 col-form-label">Degree</label>
+                                <input id="academicDetailsDegree{{id}}" name="degree"
+                                    class="form-control col-12 my-2 col-md-9" value="{{degree}}" />
+                                <label for="institution" class="col-12 col-md-3 my-2 col-form-label">Institution</label>
+                                <input id="academicDetailsInstitution{{id}}" name="institution"
+                                    class="form-control col-12 my-2 col-md-9" value="{{institution}}" />
+                                <label for="graduationYear" class="col-12 col-md-3 my-2 col-form-label">Batch of</label>
+                                <input id="academicDetailsGraduationYear{{id}}" name="graduationYear"
+                                    class="form-control col-12 my-2 col-md-9" value="{{graduationYear}}" />
+                                <label for="description" class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea id="academicDetailsDescription{{id}}" rows="2" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addAcademicDetailBtn"
+                                    class="btn btn-dark">Add
+                                    Academic Detail</button></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6 col-md-10">
+                                <h3 class="">Papers Published</h3>
+                            </div>
+                            <div class="col-6 col-md-2 d-flex justify-content-end">
+                                <a id="papersPublishedSaveBtn" class="btn btn-primary text-white mr-2">Save</a>
+                                <a class="btn btn-secondary text-white mr-0">Cancel</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="papersPublishedRows" class="form-group row">
+                            {{#each papersPublished}}
+                                <div class="col-12">
+                                    <h4 class="text-center-sm">Entry {{id}}</h4>
+                                    <hr />
+                                </div>
+                                <input type="hidden" id="paperPublishedId{{id}}" value={{id}} />
+                                <label for="title" class="col-12 col-md-3 my-2 col-form-label">Title</label>
+                                <input id="paperPublishedTitle{{id}}" name="title"
+                                    class="form-control col-12 my-2 col-md-9" value="{{title}}" />
+                                <label for="publisher" class="col-12 col-md-3 my-2 col-form-label">Publisher</label>
+                                <input id="paperPublishedPublisher{{id}}" name="publisher"
+                                    class="form-control col-12 my-2 col-md-9" value="{{publisher}}" />
+                                <label for="year" class="col-12 col-md-3 my-2 col-form-label">Year</label>
+                                <input id="paperPublishedYear{{id}}" name="year"
+                                    class="form-control col-12 my-2 col-md-9" value="{{year}}" />
+                                <label for="description" class="col-12 my-2 col-md-3 col-form-label">Description</label>
+                                <textarea id="paperPublishedDescription{{id}}" rows="2" name="description"
+                                    class="form-control col-12 my-2 col-md-9">{{description}}</textarea>
+                            {{/each}}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 my-2 text-center"><button id="addPaperPublishedBtn"
+                                    class="btn btn-dark">Add
+                                    Published Paper</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+    <script>
+        /* eslint-disable no-undef */
+        const handleFormData = fields => {
+            let object = {};
+            // let fields = [
+            //   "name",
+            //   "email",
+            //   "interests",
+            //   "skills",
+            //   "projects",
+            //   "previousInternships",
+            //   "previousWorkExperience",
+            //   "achievements",
+            //   "academicDetails",
+            //   "papersPublished"
+            // ];
+            for (let i in fields) {
+                if (fields[i] == "interests" || fields[i] == "skills") {
+                    object[fields[i]] = document.getElementById(fields[i]).value.split(", ");
+                } else if (fields[i] == "projects") {
+                    object["projects"] = [];
+
+                    for (
+                        let n = 1;
+                        n <= document.querySelectorAll("*[id^=projectTitle]").length;
+                        n++
+                    ) {
+                        object["projects"].push({
+                            id: Number(document.getElementById(`projectId${n}`).value),
+                            title: document.getElementById(`projectTitle${n}`).value,
+                            startYear: Number(document.getElementById(`projectStartYear${n}`).value),
+                            endYear: Number(document.getElementById(`projectEndYear${n}`).value),
+                            description: document.getElementById(`projectDescription${n}`).value
+                        });
+                    }
+                } else if (fields[i] == "previousInternships") {
+                    object["previousInternships"] = [];
+
+                    for (
+                        let n = 1;
+                        n <=
+                        document.querySelectorAll("*[id^=previousInternshipDesignation]")
+                            .length;
+                        n++
+                    ) {
+                        object["previousInternships"].push({
+                            id: Number(document.getElementById(`previousInternshipId${n}`).value),
+                            designation: document.getElementById(
+                                `previousInternshipDesignation${n}`
+                            ).value,
+                            startYear: Number(
+                                document.getElementById(`previousInternshipStartYear${n}`).value
+                            ),
+                            endYear: Number(
+                                document.getElementById(`previousInternshipEndYear${n}`).value
+                            ),
+                            employer: document.getElementById(`previousInternshipEmployer${n}`)
+                                .value,
+                            description: document.getElementById(
+                                `previousInternshipDescription${n}`
+                            ).value
+                        });
+                    }
+                } else if (fields[i] == "previousWorkExperience") {
+                    object["previousWorkExperience"] = [];
+
+                    for (
+                        let n = 1;
+                        n <=
+                        document.querySelectorAll("*[id^=previousWorkExperienceDesignation]")
+                            .length;
+                        n++
+                    ) {
+                        object["previousWorkExperience"].push({
+                            id: Number(document.getElementById(`previousWorkExperienceId${n}`).value),
+                            designation: document.getElementById(
+                                `previousWorkExperienceDesignation${n}`
+                            ).value,
+                            startYear: Number(
+                                document.getElementById(`previousWorkExperienceStartYear${n}`).value
+                            ),
+                            endYear: Number(
+                                document.getElementById(`previousWorkExperienceEndYear${n}`).value
+                            ),
+                            employer: document.getElementById(
+                                `previousWorkExperienceEmployer${n}`
+                            ).value,
+                            description: document.getElementById(
+                                `previousWorkExperienceDescription${n}`
+                            ).value
+                        });
+                    }
+                } else if (fields[i] == "achievements") {
+                    object["achievements"] = [];
+
+                    for (
+                        let n = 1;
+                        n <= document.querySelectorAll("*[id^=achievementTitle]").length;
+                        n++
+                    ) {
+                        object["achievements"].push({
+                            id: Number(document.getElementById(`achievementId${n}`).value),
+                            title: document.getElementById(`achievementTitle${n}`).value,
+                            year: Number(document.getElementById(`achievementYear${n}`).value),
+                            issuer: document.getElementById(`achievementIssuer${n}`).value,
+                            description: document.getElementById(`achievementDescription${n}`)
+                                .value
+                        });
+                    }
+                } else if (fields[i] == "academicDetails") {
+                    object["academicDetails"] = [];
+
+                    for (
+                        let n = 1;
+                        n <= document.querySelectorAll("*[id^=academicDetailsDegree]").length;
+                        n++
+                    ) {
+                        object["academicDetails"].push({
+                            id: Number(document.getElementById(`academicDetailsId${n}`).value),
+                            designation: document.getElementById(`academicDetailsDegree${n}`)
+                                .value,
+                            year: Number(
+                                document.getElementById(`academicDetailsGraduationYear${n}`).value
+                            ),
+                            institution: document.getElementById(`academicDetailsInstitution${n}`)
+                                .value,
+                            description: document.getElementById(`academicDetailsDescription${n}`)
+                                .value
+                        });
+                    }
+                } else if (fields[i] == "papersPublished") {
+                    object["papersPublished"] = [];
+
+                    for (
+                        let n = 1;
+                        n <= document.querySelectorAll("*[id^=paperPublishedTitle]").length;
+                        n++
+                    ) {
+                        object["papersPublished"].push({
+                            id: Number(document.getElementById(`paperPublishedId${n}`).value),
+                            title: document.getElementById(`paperPublishedTitle${n}`).value,
+                            year: Number(document.getElementById(`paperPublishedYear${n}`).value),
+                            publisher: document.getElementById(`paperPublishedPublisher${n}`)
+                                .value,
+                            description: document.getElementById(`paperPublishedDescription${n}`)
+                                .value
+                        });
+                    }
+                } else {
+                    object[fields[i]] = document.getElementById(fields[i]).value;
+                }
+            }
+            return object;
+        };
+
+        document.getElementById("basicSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["name", "email", "about", "skills", "interests"])
+            }).then(d => {
+                console.log(d); document.getElementById("basicSaveBtn").classList.remove("btn-primary");
+                document.getElementById("basicSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("basicSaveBtn").classList.remove("btn-success");
+                    document.getElementById("basicSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("socialSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["githubUrl", "linkedinUrl", "facebookUrl"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("socialSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("socialSaveBtn").classList.remove("btn-success");
+                    document.getElementById("socialSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("projectsSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["projects"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("projectsSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("projectsSaveBtn").classList.remove("btn-success");
+                    document.getElementById("projectsSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("previousInternshipsSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["previousInternships"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("previousInternshipsSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("previousInternshipsSaveBtn").classList.remove("btn-success");
+                    document.getElementById("previousInternshipsSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("previousWorkExperienceSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["previousWorkExperience"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("previousWorkExperienceSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("previousWorkExperienceSaveBtn").classList.remove("btn-success");
+                    document.getElementById("previousWorkExperienceSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("achievementsSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["achievements"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("achievementsSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("achievementsSaveBtn").classList.remove("btn-success");
+                    document.getElementById("achievementsSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("academicDetailsSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["academicDetails"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("academicDetailsSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("academicDetailsSaveBtn").classList.remove("btn-success");
+                    document.getElementById("academicDetailsSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("papersPublishedSaveBtn").addEventListener("click", () => {
+            axios({
+                url: "https://streethack.ghosh.pro/api/users/update/{{id}}", method: "post", headers: {
+                    Authorization: "Bearer {{token}}"
+                }, data: handleFormData(["papersPublished"])
+            }).then(d => {
+                console.log(d);
+                document.getElementById("papersPublishedSaveBtn").classList.add("btn-success");
+                setTimeout(() => {
+                    document.getElementById("papersPublishedSaveBtn").classList.remove("btn-success");
+                    document.getElementById("papersPublishedSaveBtn").classList.add("btn-primary");
+                }, 3000)
+            }).catch(e => console.log(e));
+        });
+
+        document.getElementById("addProjectBtn").addEventListener("click", () => {
+            let newProjectIdVal = document.querySelectorAll("[id^=projectTitle]").length + 1;
+            let newProjectHeading = document.createElement("div");
+            newProjectHeading.setAttribute("class", "col-12 mt-2");
+            newProjectHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newProjectIdVal}</h4>
+            <hr />
+           `;
+
+            let newProjectId = document.createElement("input");
+            newProjectId.setAttribute("type", "hidden");
+            newProjectId.setAttribute("id", `projectId${newProjectIdVal}`);
+            newProjectId.value = newProjectIdVal;
+
+            let newProjectTitleLabel = document.createElement("label");
+            newProjectTitleLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newProjectTitleLabel.innerHTML = "Title";
+
+            let newProjectTitle = document.createElement("input");
+            newProjectTitle.setAttribute("id", `projectTitle${newProjectIdVal}`);
+            newProjectTitle.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newProjectStartYearLabel = document.createElement("label");
+            newProjectStartYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newProjectStartYearLabel.innerHTML = "Start Year";
+
+            let newProjectStartYear = document.createElement("input");
+            newProjectStartYear.setAttribute("id", `projectStartYear${newProjectIdVal}`);
+            newProjectStartYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newProjectEndYearLabel = document.createElement("label");
+            newProjectEndYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newProjectEndYearLabel.innerHTML = "End Year";
+
+            let newProjectEndYear = document.createElement("input");
+            newProjectEndYear.setAttribute("id", `projectEndYear${newProjectIdVal}`);
+            newProjectEndYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newProjectDescriptionLabel = document.createElement("label");
+            newProjectDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newProjectDescriptionLabel.innerHTML = "Description";
+
+            let newProjectDescription = document.createElement("textarea");
+            newProjectDescription.setAttribute("id", `projectDescription${newProjectIdVal}`);
+            newProjectDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("projectsRows").appendChild(newProjectHeading);
+            document.getElementById("projectsRows").appendChild(newProjectId);
+            document.getElementById("projectsRows").appendChild(newProjectTitleLabel);
+            document.getElementById("projectsRows").appendChild(newProjectTitle);
+            document.getElementById("projectsRows").appendChild(newProjectStartYearLabel);
+            document.getElementById("projectsRows").appendChild(newProjectStartYear);
+            document.getElementById("projectsRows").appendChild(newProjectEndYearLabel);
+            document.getElementById("projectsRows").appendChild(newProjectEndYear);
+            document.getElementById("projectsRows").appendChild(newProjectDescriptionLabel);
+            document.getElementById("projectsRows").appendChild(newProjectDescription);
+        });
+
+        document.getElementById("addInternshipBtn").addEventListener("click", () => {
+            let newInternshipIdVal = document.querySelectorAll("*[id^=previousInternshipDesignation]").length + 1;
+            let newInternshipHeading = document.createElement("div");
+            newInternshipHeading.setAttribute("class", "col-12 mt-2");
+            newInternshipHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newInternshipIdVal}</h4>
+            <hr />
+           `;
+
+            let newInternshipId = document.createElement("input");
+            newInternshipId.setAttribute("type", "hidden");
+            newInternshipId.setAttribute("id", `previousInternshipId${newInternshipIdVal}`);
+            newInternshipId.value = newInternshipIdVal;
+
+            let newInternshipDesignationLabel = document.createElement("label");
+            newInternshipDesignationLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newInternshipDesignationLabel.innerHTML = "Designation";
+
+            let newInternshipDesignation = document.createElement("input");
+            newInternshipDesignation.setAttribute("id", `previousInternshipDesignation${newInternshipIdVal}`);
+            newInternshipDesignation.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newInternshipEmployerLabel = document.createElement("label");
+            newInternshipEmployerLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newInternshipEmployerLabel.innerHTML = "Employer";
+
+            let newInternshipEmployer = document.createElement("input");
+            newInternshipEmployer.setAttribute("id", `previousInternshipEmployer${newInternshipIdVal}`);
+            newInternshipEmployer.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newInternshipStartYearLabel = document.createElement("label");
+            newInternshipStartYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newInternshipStartYearLabel.innerHTML = "Start Year";
+
+            let newInternshipStartYear = document.createElement("input");
+            newInternshipStartYear.setAttribute("id", `previousInternshipStartYear${newInternshipIdVal}`);
+            newInternshipStartYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newInternshipEndYearLabel = document.createElement("label");
+            newInternshipEndYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newInternshipEndYearLabel.innerHTML = "End Year";
+
+            let newInternshipEndYear = document.createElement("input");
+            newInternshipEndYear.setAttribute("id", `previousInternshipEndYear${newInternshipIdVal}`);
+            newInternshipEndYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newInternshipDescriptionLabel = document.createElement("label");
+            newInternshipDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newInternshipDescriptionLabel.innerHTML = "Description";
+
+            let newInternshipDescription = document.createElement("textarea");
+            newInternshipDescription.setAttribute("id", `previousInternshipDescription${newInternshipIdVal}`);
+            newInternshipDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("internshipsRows").appendChild(newInternshipHeading);
+            document.getElementById("internshipsRows").appendChild(newInternshipId);
+            document.getElementById("internshipsRows").appendChild(newInternshipDesignationLabel);
+            document.getElementById("internshipsRows").appendChild(newInternshipDesignation);
+            document.getElementById("internshipsRows").appendChild(newInternshipEmployerLabel);
+            document.getElementById("internshipsRows").appendChild(newInternshipEmployer);
+            document.getElementById("internshipsRows").appendChild(newInternshipStartYearLabel);
+            document.getElementById("internshipsRows").appendChild(newInternshipStartYear);
+            document.getElementById("internshipsRows").appendChild(newInternshipEndYearLabel);
+            document.getElementById("internshipsRows").appendChild(newInternshipEndYear);
+            document.getElementById("internshipsRows").appendChild(newInternshipDescriptionLabel);
+            document.getElementById("internshipsRows").appendChild(newInternshipDescription);
+        });
+
+        document.getElementById("addWorkExperienceBtn").addEventListener("click", () => {
+            let newWorkExperienceIdVal = document.querySelectorAll("*[id^=previousWorkExperienceDesignation]").length + 1;
+            let newWorkExperienceHeading = document.createElement("div");
+            newWorkExperienceHeading.setAttribute("class", "col-12 mt-2");
+            newWorkExperienceHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newWorkExperienceIdVal}</h4>
+            <hr />
+           `;
+
+            let newWorkExperienceId = document.createElement("input");
+            newWorkExperienceId.setAttribute("type", "hidden");
+            newWorkExperienceId.setAttribute("id", `previousWorkExperienceId${newWorkExperienceIdVal}`);
+            newWorkExperienceId.value = newWorkExperienceIdVal;
+
+            let newWorkExperienceDesignationLabel = document.createElement("label");
+            newWorkExperienceDesignationLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newWorkExperienceDesignationLabel.innerHTML = "Designation";
+
+            let newWorkExperienceDesignation = document.createElement("input");
+            newWorkExperienceDesignation.setAttribute("id", `previousWorkExperienceDesignation${newWorkExperienceIdVal}`);
+            newWorkExperienceDesignation.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newWorkExperienceEmployerLabel = document.createElement("label");
+            newWorkExperienceEmployerLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newWorkExperienceEmployerLabel.innerHTML = "Employer";
+
+            let newWorkExperienceEmployer = document.createElement("input");
+            newWorkExperienceEmployer.setAttribute("id", `previousWorkExperienceEmployer${newWorkExperienceIdVal}`);
+            newWorkExperienceEmployer.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newWorkExperienceStartYearLabel = document.createElement("label");
+            newWorkExperienceStartYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newWorkExperienceStartYearLabel.innerHTML = "Start Year";
+
+            let newWorkExperienceStartYear = document.createElement("input");
+            newWorkExperienceStartYear.setAttribute("id", `previousWorkExperienceStartYear${newWorkExperienceIdVal}`);
+            newWorkExperienceStartYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newWorkExperienceEndYearLabel = document.createElement("label");
+            newWorkExperienceEndYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newWorkExperienceEndYearLabel.innerHTML = "End Year";
+
+            let newWorkExperienceEndYear = document.createElement("input");
+            newWorkExperienceEndYear.setAttribute("id", `previousWorkExperienceEndYear${newWorkExperienceIdVal}`);
+            newWorkExperienceEndYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newWorkExperienceDescriptionLabel = document.createElement("label");
+            newWorkExperienceDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newWorkExperienceDescriptionLabel.innerHTML = "Description";
+
+            let newWorkExperienceDescription = document.createElement("textarea");
+            newWorkExperienceDescription.setAttribute("id", `previousWorkExperienceDescription${newWorkExperienceIdVal}`);
+            newWorkExperienceDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceHeading);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceId);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceDesignationLabel);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceDesignation);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceEmployerLabel);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceEmployer);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceStartYearLabel);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceStartYear);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceEndYearLabel);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceEndYear);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceDescriptionLabel);
+            document.getElementById("workExperiencesRows").appendChild(newWorkExperienceDescription);
+        });
+
+        document.getElementById("addAchievementBtn").addEventListener("click", () => {
+            let newAchievementIdVal = document.querySelectorAll("*[id^=achievementTitle]").length + 1;
+            let newAchievementHeading = document.createElement("div");
+            newAchievementHeading.setAttribute("class", "col-12 mt-2");
+            newAchievementHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newAchievementIdVal}</h4>
+            <hr />
+           `;
+
+            let newAchievementId = document.createElement("input");
+            newAchievementId.setAttribute("type", "hidden");
+            newAchievementId.setAttribute("id", `achievementId${newAchievementIdVal}`);
+            newAchievementId.value = newAchievementIdVal;
+
+            let newAchievementTitleLabel = document.createElement("label");
+            newAchievementTitleLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAchievementTitleLabel.innerHTML = "Title";
+
+            let newAchievementTitle = document.createElement("input");
+            newAchievementTitle.setAttribute("id", `achievementTitle${newAchievementIdVal}`);
+            newAchievementTitle.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAchievementIssuerLabel = document.createElement("label");
+            newAchievementIssuerLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAchievementIssuerLabel.innerHTML = "Issuer";
+
+            let newAchievementIssuer = document.createElement("input");
+            newAchievementIssuer.setAttribute("id", `achievementIssuer${newAchievementIdVal}`);
+            newAchievementIssuer.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAchievementYearLabel = document.createElement("label");
+            newAchievementYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAchievementYearLabel.innerHTML = "Year";
+
+            let newAchievementYear = document.createElement("input");
+            newAchievementYear.setAttribute("id", `achievementYear${newAchievementIdVal}`);
+            newAchievementYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAchievementDescriptionLabel = document.createElement("label");
+            newAchievementDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAchievementDescriptionLabel.innerHTML = "Description";
+
+            let newAchievementDescription = document.createElement("textarea");
+            newAchievementDescription.setAttribute("id", `achievementDescription${newAchievementIdVal}`);
+            newAchievementDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("achievementsRows").appendChild(newAchievementHeading);
+            document.getElementById("achievementsRows").appendChild(newAchievementId);
+            document.getElementById("achievementsRows").appendChild(newAchievementTitleLabel);
+            document.getElementById("achievementsRows").appendChild(newAchievementTitle);
+            document.getElementById("achievementsRows").appendChild(newAchievementIssuerLabel);
+            document.getElementById("achievementsRows").appendChild(newAchievementIssuer);
+            document.getElementById("achievementsRows").appendChild(newAchievementYearLabel);
+            document.getElementById("achievementsRows").appendChild(newAchievementYear);
+            document.getElementById("achievementsRows").appendChild(newAchievementDescriptionLabel);
+            document.getElementById("achievementsRows").appendChild(newAchievementDescription);
+        });
+
+        document.getElementById("addAcademicDetailBtn").addEventListener("click", () => {
+            let newAcademicDetailIdVal = document.querySelectorAll("*[id^=academicDetailsDegree]").length + 1;
+            let newAcademicDetailHeading = document.createElement("div");
+            newAcademicDetailHeading.setAttribute("class", "col-12 mt-2");
+            newAcademicDetailHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newAcademicDetailIdVal}</h4>
+            <hr />
+           `;
+
+            let newAcademicDetailId = document.createElement("input");
+            newAcademicDetailId.setAttribute("type", "hidden");
+            newAcademicDetailId.setAttribute("id", `academicDetailsId${newAcademicDetailIdVal}`);
+            newAcademicDetailId.value = newAcademicDetailIdVal;
+
+            let newAcademicDetailDegreeLabel = document.createElement("label");
+            newAcademicDetailDegreeLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAcademicDetailDegreeLabel.innerHTML = "Degree";
+
+            let newAcademicDetailDegree = document.createElement("input");
+            newAcademicDetailDegree.setAttribute("id", `academicDetailsDegree${newAcademicDetailIdVal}`);
+            newAcademicDetailDegree.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAcademicDetailInstitutionLabel = document.createElement("label");
+            newAcademicDetailInstitutionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAcademicDetailInstitutionLabel.innerHTML = "Institution";
+
+            let newAcademicDetailInstitution = document.createElement("input");
+            newAcademicDetailInstitution.setAttribute("id", `academicDetailsInstitution${newAcademicDetailIdVal}`);
+            newAcademicDetailInstitution.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAcademicDetailGraduationYearLabel = document.createElement("label");
+            newAcademicDetailGraduationYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAcademicDetailGraduationYearLabel.innerHTML = "Batch of";
+
+            let newAcademicDetailGraduationYear = document.createElement("input");
+            newAcademicDetailGraduationYear.setAttribute("id", `academicDetailsGraduationYear${newAcademicDetailIdVal}`);
+            newAcademicDetailGraduationYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newAcademicDetailDescriptionLabel = document.createElement("label");
+            newAcademicDetailDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newAcademicDetailDescriptionLabel.innerHTML = "Description";
+
+            let newAcademicDetailDescription = document.createElement("textarea");
+            newAcademicDetailDescription.setAttribute("id", `academicDetailsDescription${newAcademicDetailIdVal}`);
+            newAcademicDetailDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailHeading);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailId);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailDegreeLabel);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailDegree);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailInstitutionLabel);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailInstitution);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailGraduationYearLabel);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailGraduationYear);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailDescriptionLabel);
+            document.getElementById("academicDetailsRows").appendChild(newAcademicDetailDescription);
+        });
+
+        document.getElementById("addPaperPublishedBtn").addEventListener("click", () => {
+            let newPaperPublishedIdVal = document.querySelectorAll("*[id^=paperPublishedTitle]").length + 1;
+            let newPaperPublishedHeading = document.createElement("div");
+            newPaperPublishedHeading.setAttribute("class", "col-12 mt-2");
+            newPaperPublishedHeading.innerHTML = `
+            <h4 class="text-center-sm">Entry ${newPaperPublishedIdVal}</h4>
+            <hr />
+           `;
+
+            let newPaperPublishedId = document.createElement("input");
+            newPaperPublishedId.setAttribute("type", "hidden");
+            newPaperPublishedId.setAttribute("id", `paperPublishedId${newPaperPublishedIdVal}`);
+            newPaperPublishedId.value = newPaperPublishedIdVal;
+
+            let newPaperPublishedTitleLabel = document.createElement("label");
+            newPaperPublishedTitleLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newPaperPublishedTitleLabel.innerHTML = "Title";
+
+            let newPaperPublishedTitle = document.createElement("input");
+            newPaperPublishedTitle.setAttribute("id", `paperPublishedTitle${newPaperPublishedIdVal}`);
+            newPaperPublishedTitle.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newPaperPublishedPublisherLabel = document.createElement("label");
+            newPaperPublishedPublisherLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newPaperPublishedPublisherLabel.innerHTML = "Publisher";
+
+            let newPaperPublishedPublisher = document.createElement("input");
+            newPaperPublishedPublisher.setAttribute("id", `paperPublishedPublisher${newPaperPublishedIdVal}`);
+            newPaperPublishedPublisher.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newPaperPublishedYearLabel = document.createElement("label");
+            newPaperPublishedYearLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newPaperPublishedYearLabel.innerHTML = "Year";
+
+            let newPaperPublishedYear = document.createElement("input");
+            newPaperPublishedYear.setAttribute("id", `paperPublishedYear${newPaperPublishedIdVal}`);
+            newPaperPublishedYear.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            let newPaperPublishedDescriptionLabel = document.createElement("label");
+            newPaperPublishedDescriptionLabel.setAttribute("class", "col-12 col-md-3 my-2 col-form-label");
+            newPaperPublishedDescriptionLabel.innerHTML = "Description";
+
+            let newPaperPublishedDescription = document.createElement("textarea");
+            newPaperPublishedDescription.setAttribute("id", `paperPublishedDescription${newPaperPublishedIdVal}`);
+            newPaperPublishedDescription.setAttribute("class", "form-control col-12 my-2 col-md-9");
+
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedHeading);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedId);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedTitleLabel);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedTitle);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedPublisherLabel);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedPublisher);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedYearLabel);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedYear);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedDescriptionLabel);
+            document.getElementById("papersPublishedRows").appendChild(newPaperPublishedDescription);
+        });
+    </script>
+
+</html>

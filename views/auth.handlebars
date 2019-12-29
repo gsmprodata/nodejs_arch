@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <title>{{title}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <div class="container-fluid" style="min-height: 100%">
+            <div class="row" style="height: 100vh">
+                <div class="login col-xs-12 col-xs-offset-0 col-sm-12 col-md-5 col-sm-offset-3 text-center py-5"
+                    style="backgroundColor: #ffffff; height: 100%">
+                    <h1>Street<strong>Hack</strong></h1>
+                    <div class="container py-2 pt-4">
+                        {{#unless forgotPassword}}
+                            {{#unless register}}
+                                <h3 class="text-center">Social Login</h3>
+                                <div class="row py-2 mx-3">
+                                    <div class="col-12">
+                                        <a href="https://streethack.ghosh.pro/api/auth/facebook" class="btn  btn-primary"
+                                            style="width:20%;margin:auto">
+                                            <i class="fab fa-facebook fa-2x"></i>
+                                        </a>&nbsp;&nbsp;
+                                        <a href="https://streethack.ghosh.pro/api/auth/google" class="btn  btn-danger"
+                                            style="width:20%;margin:auto">
+                                            <i class="fab fa-google fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row py-2 mx-3">
+                                    <div class="col-12">
+                                        <a href="https://streethack.ghosh.pro/api/auth/github" class="btn btn-dark"
+                                            style="width:20%;margin:auto">
+                                            <i class="fab fa-github fa-2x"></i>
+                                        </a>&nbsp;&nbsp;
+                                        <a href="https://streethack.ghosh.pro/api/auth/linkedin" class="btn btn-info"
+                                            style="width:20%;margin:auto">
+                                            <i class="fab fa-linkedin fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr />
+                            {{/unless}}
+                    </div>
+                    {{/unless}}
+                    {{#if login}}
+                        {{#if errors}}
+                            {{#each errors}}
+                                <div class="btn btn-danger">{{this}}</div>
+                            {{/each}}
+                        {{/if}}
+                        <form id="loginform" class="form-group py-2 mx-5" action="/api/users/auth" method="POST">
+                            <h3 class="pb-2">Login with e-mail</h3>
+                            <label class="sr-only" for="email">
+                                Email Address:
+                            </label>
+                            <input type="email" placeholder="enter your email" name="email"
+                                class="form-control text-center my-2" id="email" />
+                            <label for="password" class="sr-only">Password:</label>
+                            <input type="password" placeholder="enter your password" name="password"
+                                class="form-control text-center my-2" id="password" />
+                            <button type="submit" id="login" class="btn btn-dark btn-block">
+                                LOGIN
+                            </button>
+                        </form>
+                        <div class="text-center pb-1"><a href="/forgotPassword">Forgot Password ?</a></div>
+                        <div class="text-center">
+                            Don't have an account? <a href="/register">Register Now</a>
+                        </div>
+                        <script>
+                            let params = (new URL(document.location)).searchParams;
+                            if (params.get("email") && params.get("email") == "mailsent") {
+                                const alert = document.createElement("div");
+                                alert.classList.add("btn");
+                                alert.classList.add("btn-success");
+                                alert.classList.add("btn-block");
+                                alert.classList.add("mb-4");
+                                alert.appendChild(document.createTextNode("Verification email sent"));
+                                setTimeout(() => alert.parentNode.removeChild(alert), 2000)
+                                document.getElementById("loginform").insertBefore(alert, document.getElementById("loginform").firstChild);
+                            };
+                        </script>
+                    {{/if}}
+                    {{#if register}}
+                        <h3 class="text-center mt-5">Register @ StreetHack</h3>
+                        <form class="form-group py-2 mx-5" action="/api/users/register" method="POST">
+                            <label class="sr-only" for="name">Name:</label>
+                            <input type="text" name="name" placeholder="enter your name"
+                                class="form-control text-center my-2">
+                            <label class="sr-only" for="email">
+                                Email Address:
+                            </label>
+                            <input type="email" name="email" placeholder="enter your email"
+                                class="form-control text-center my-2" id="email" />
+                            <label for="password" class="sr-only">Password:</label>
+                            <input type="password" name="password" placeholder="enter your password"
+                                class="form-control text-center my-2" id="password" />
+                            <label for="inviter" class="sr-only">Inviter:</label>
+                            <input type="text" class="form-control text-center my-2" name="inviter"
+                                placeholder="email of inviter" />
+                            <label for="regCode" class="sr-only">Unique Invitation Code:</label>
+                            <input type="text" class="form-control text-center my-2" name="regCode"
+                                placeholder="enter the unique invitation code" />
+                            <input type="hidden" name="regCodeRequired" value="true">
+                            <button type="submit" id="register" class="btn btn-dark btn-block">
+                                REGISTER
+                            </button>
+                        </form>
+                        {{!-- <div class="text-center pb-1"><a href="/forgotPassword">Forgot Password ?</a></div> --}}
+                        <div class="text-center">
+                            Already have an account? <a href="/login">Login</a>
+                        </div>
+                    {{/if}}
+                    {{#if forgotPassword}}
+                        <h3 class="text-center mt-5">Forgot Password</h3>
+                        <div class="form-group py-4" id="resetForm">
+                            <input type="email" id="resetPasswordEmail" class=" text-center form-control mb-4"
+                                placeholder="enter an email address" />
+                            <button type="submit" class="btn btn-block btn-dark" id="resetPasswordBtn">Send Reset
+                                Email</button>
+                            <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+                            <script>
+                                const resetForm = document.getElementById("resetForm");
+                                const resetPasswordBtn = document.getElementById("resetPasswordBtn");
+
+                                resetPasswordBtn.addEventListener("click", () => {
+                                    const resetPasswordEmail = document.getElementById("resetPasswordEmail").value;
+                                    axios.post("https://streethack.ghosh.pro/api/users/resetPassword", {
+                                        email: resetPasswordEmail
+                                    }).then(d => {
+                                        if (d.data.message) {
+                                            const alert = document.createElement("div");
+                                            alert.classList.add("btn");
+                                            alert.classList.add("btn-success");
+                                            alert.classList.add("btn-block");
+                                            alert.classList.add("mb-4");
+                                            alert.appendChild(document.createTextNode("Email Sent"));
+                                            setTimeout(() => alert.parentNode.removeChild(alert), 2000)
+                                            resetForm.insertBefore(alert, resetForm.firstChild);
+                                            window.location.href = "/login";
+                                        }
+                                    }).catch(err => {
+                                        const alert = document.createElement("div");
+                                        alert.classList.add("btn");
+                                        alert.classList.add("btn-danger");
+                                        alert.classList.add("btn-block");
+                                        alert.classList.add("mb-4");
+                                        alert.appendChild(document.createTextNode("Couldn't send an e-mail"));
+                                        setTimeout(() => alert.parentNode.removeChild(alert), 2000)
+                                        resetForm.insertBefore(alert, resetForm.firstChild);
+                                        console.log(err);
+                                    })
+                                })
+                            </script>
+                            <div class="text-center mt-4"><a href="#" onclick="window.history.back();">&#8617; Go
+                                    Back</a></div>
+                        </div>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-sm-7 col-sm-offset-0 hidden-sm-down" style="height: 100%; padding: 0">
+                <img style="width: 100%; height: 100%"
+                    src="https://i.pinimg.com/originals/32/11/e9/3211e9d656b191950b077d0f70655668.jpg" alt="" />
+            </div>
+        </div>
+        </div>
+    </body>
+    <script src="https://kit.fontawesome.com/7f05549f7c.js"></script>
+
+</html>

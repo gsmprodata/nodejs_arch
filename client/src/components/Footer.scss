@@ -1,0 +1,26 @@
+.page-footer {
+  hr {
+    height: 2px;
+  }
+  .footer-about {
+    p {
+      text-align: justify;
+    }
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.social-icons {
+  a {
+    cursor: pointer;
+    transition: 100ms;
+  }
+  a:hover {
+    i {
+      transform: scale(1.2);
+      transition: 100ms;
+    }
+  }
+}
